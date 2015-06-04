@@ -1,0 +1,653 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+ <path>Scaniablue.ac</path>
+ <!-- x/y/z == back/right/up -->
+
+<!--Headlights-->
+        <model>
+            <name>Headlights</name>
+            <path>Aircraft/Super_Truck/Models/headlights.ac</path>
+	 <condition>	
+ 	  <property>sim/multiplay/generic/int[14]</property>
+	</condition>
+            <offsets>
+                <x-m>0</x-m>
+                <y-m>0</y-m>
+                <z-m>-.2</z-m>
+                <pitch-deg>2</pitch-deg>
+            </offsets>
+        </model>
+
+
+ <!-- Parachute -->
+ <model>
+   <path>Aircraft/DavePack/Stores/Chute/chute.xml</path>
+   <offsets>
+     <x-m>3.92512</x-m>
+     <y-m>-0.493338</y-m>
+     <z-m>0.80098</z-m>
+     <pitch-deg>-10</pitch-deg>
+     <yaw-deg>0</yaw-deg>
+   </offsets>
+ </model>
+
+
+ <!-- Parachute -->
+ <model>
+   <path>Aircraft/DavePack/Stores/Chute/chute.xml</path>
+   <offsets>
+     <x-m>3.92588</x-m>
+     <y-m>0.56148</y-m>
+     <z-m>0.90098</z-m>
+     <pitch-deg>-10</pitch-deg>
+     <yaw-deg>0</yaw-deg>
+   </offsets>
+ </model>
+
+  <!-- brake lights -->
+
+ <model>
+   <path>RedLight.xml</path>
+<condition>
+<or>
+<greater-than>
+   <property>sim/multiplay/generic/int[9]</property>
+	<value>.25</value>
+</greater-than>
+   <property>sim/multiplay/generic/int[13]</property>
+</or>
+</condition>
+   <offsets>
+     <x-m>4.2</x-m>
+     <y-m>-1.48877</y-m>
+     <z-m>1.01047</z-m>
+   </offsets>
+ </model>
+ <model>
+   <path>RedLight.xml</path>
+<condition>
+<or>
+<greater-than>
+   <property>sim/multiplay/generic/int[9]</property>
+	<value>.25</value>
+</greater-than>
+   <property>sim/multiplay/generic/int[13]</property>
+</or>
+</condition>
+   <offsets>
+     <x-m>4.2</x-m>
+     <y-m>-1.30283</y-m>
+     <z-m>1.01047</z-m>
+   </offsets>
+ </model>
+ <model>
+<condition>
+<or>
+<greater-than>
+   <property>sim/multiplay/generic/int[9]</property>
+	<value>.25</value>
+</greater-than>
+   <property>sim/multiplay/generic/int[13]</property>
+</or>
+</condition>
+   <path>RedLight.xml</path>
+   <offsets>
+     <x-m>4.2</x-m>
+     <y-m>-1.05638</y-m>
+     <z-m>1.01047</z-m>
+   </offsets>
+ </model>
+ <model>
+<condition>
+<or>
+<greater-than>
+   <property>sim/multiplay/generic/int[9]</property>
+	<value>.25</value>
+</greater-than>
+   <property>sim/multiplay/generic/int[13]</property>
+</or>
+</condition>
+   <path>RedLight.xml</path>
+   <offsets>
+     <x-m>4.2</x-m>
+     <y-m>-0.86429</y-m>
+     <z-m>1.01047</z-m>
+   </offsets>
+ </model>
+
+ <model>
+<condition>
+<or>
+<greater-than>
+   <property>sim/multiplay/generic/int[9]</property>
+	<value>.25</value>
+</greater-than>
+   <property>sim/multiplay/generic/int[13]</property>
+</or>
+</condition>
+   <path>RedLight.xml</path>
+   <offsets>
+     <x-m>4.2</x-m>
+     <y-m>0.905638</y-m>
+     <z-m>1.01047</z-m>
+   </offsets>
+ </model>
+ <model>
+<condition>
+<or>
+<greater-than>
+   <property>sim/multiplay/generic/int[9]</property>
+	<value>.25</value>
+</greater-than>
+   <property>sim/multiplay/generic/int[13]</property>
+</or>
+</condition>
+   <path>RedLight.xml</path>
+   <offsets>
+     <x-m>4.2</x-m>
+     <y-m>1.09773</y-m>
+     <z-m>1.01047</z-m>
+   </offsets>
+ </model>
+ <model>
+<condition>
+<or>
+<greater-than>
+   <property>sim/multiplay/generic/int[9]</property>
+	<value>.25</value>
+</greater-than>
+   <property>sim/multiplay/generic/int[13]</property>
+</or>
+</condition>
+   <path>RedLight.xml</path>
+   <offsets>
+     <x-m>4.2</x-m>
+     <y-m>1.34417</y-m>
+     <z-m>1.01047</z-m>
+   </offsets>
+ </model>
+ <model>
+<condition>
+<or>
+<greater-than>
+   <property>sim/multiplay/generic/int[9]</property>
+	<value>.25</value>
+</greater-than>
+   <property>sim/multiplay/generic/int[13]</property>
+</or>
+</condition>
+   <path>RedLight.xml</path>
+   <offsets>
+     <x-m>4.2</x-m>
+     <y-m>1.53012</y-m>
+     <z-m>1.01047</z-m>
+   </offsets>
+ </model>
+
+<!--deceleration lights-->
+
+ <model>
+   <path>OrangeLight.xml</path>
+	<condition>
+	<less-than>
+   <property>sim/multiplay/generic/int[11]</property>
+	<value>0.02</value>
+	</less-than>
+	</condition>
+   <offsets>
+     <x-m>-0.930843</x-m>
+     <y-m>-0.811133</y-m>
+     <z-m>2.54863</z-m>
+   </offsets>
+ </model>
+
+ <model>
+   <path>OrangeLight.xml</path>
+	<condition>
+	<less-than>
+   <property>sim/multiplay/generic/int[11]</property>
+	<value>0.02</value>
+	</less-than>
+	</condition>
+   <offsets>
+     <x-m>-0.915303</x-m>
+     <y-m>0.811033</y-m>
+     <z-m>2.54944</z-m>
+   </offsets>
+ </model>
+
+
+ <animation>
+  <type>rotate</type>
+  <object-name>steeringwheel</object-name>
+  <object-name>F</object-name>
+  <object-name>G</object-name>
+  <property>surface-positions/rudder-pos-norm</property>
+  <factor>-150</factor>
+<axis>
+ <x2-m>-2.87</x2-m>
+ <y2-m>-0.804219</y2-m>
+ <z2-m>2.51</z2-m>
+ <x1-m>-3.39</x1-m>
+ <y1-m>-0.804219</y1-m>
+ <z1-m>1.56</z1-m>
+</axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>leftfronttire</object-name>
+    <object-name>leftfrontwheel</object-name>
+    <object-name>leftfronthub</object-name>
+    <object-name>leftfrontdisk2</object-name>
+  <property>surface-positions/rudder-pos-norm</property>
+  <interpolation>
+   <entry>
+    <ind>-1.0</ind>
+    <dep>20</dep>
+   </entry>
+   <entry>
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>-20</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m>-1.92723</x-m>
+   <y-m>-1.27905</y-m>
+   <z-m>0.606603</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>rightfronttire</object-name>
+  <object-name>rightfrontwheel</object-name>
+  <object-name>rightfrontdisk2</object-name>
+    <object-name>rightfronthub</object-name>
+  <property>surface-positions/rudder-pos-norm</property>
+  <interpolation>
+   <entry>
+    <ind>-1.0</ind>
+    <dep>20</dep>
+   </entry>
+   <entry>
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>-20</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m>-1.92653</x-m>
+   <y-m> 1.33269</y-m>
+   <z-m> 0.605446</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+<animation>
+    <type>translate</type>
+  <object-name>leftfronttire</object-name>
+    <object-name>leftfrontwheel</object-name>
+    <object-name>leftfronthub</object-name>
+    <object-name>leftfrontdisk</object-name>
+    <object-name>leftfrontbrake</object-name>
+    <object-name>leftfrontdisk2</object-name>
+    <property>gear/gear[0]/compression-norm</property>
+    <factor>.15</factor>
+    <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+    </axis>
+  </animation>
+
+<animation>
+    <type>translate</type>
+  <object-name>rightfronttire</object-name>
+  <object-name>rightfrontwheel</object-name>
+    <object-name>rightfrontdisk</object-name>
+  <object-name>rightfrontdisk2</object-name>
+    <object-name>rightfronthub</object-name>
+    <object-name>rightfrontbrake</object-name>
+    <property>gear/gear[1]/compression-norm</property>
+    <factor>.15</factor>
+    <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>spin</type>
+  <object-name>leftfronttire</object-name>
+    <object-name>leftfrontwheel</object-name>
+    <object-name>leftfronthub</object-name>
+    <object-name>leftfrontdisk</object-name>
+    <object-name>leftfrontdisk2</object-name>
+<property>fdm/jsbsim/gear/unit[0]/wheel-speed-fps</property>
+	  <!--<property>sim/multiplay/generic/float[14]</property>-->
+  <factor>-1.5</factor>
+  <center>
+   <x-m>-1.92723</x-m>
+   <y-m>-1.27905</y-m>
+   <z-m>0.606603</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1</y>
+   <z>0.0</z>
+  </axis>
+  </animation>
+
+
+  <animation>
+    <type>spin</type>
+  <object-name>rightfronttire</object-name>
+  <object-name>rightfrontwheel</object-name>
+    <object-name>rightfrontdisk</object-name>
+  <object-name>rightfrontdisk2</object-name>
+    <object-name>rightfronthub</object-name>
+  <property>fdm/jsbsim/gear/unit[1]/wheel-speed-fps</property>
+	<!--<property>sim/multiplay/generic/float[15]</property>-->
+  <factor>-1.5</factor>
+  <center>
+   <x-m>-1.92653</x-m>
+   <y-m> 1.33269</y-m>
+   <z-m> 0.605446</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1</y>
+   <z>0.0</z>
+  </axis>
+  </animation>
+
+
+<animation>
+    <type>translate</type>
+    <object-name>leftreartires</object-name>
+    <object-name>leftrearwheel</object-name>
+    <object-name>leftrearhub</object-name>
+    <object-name>leftrearlugs</object-name>
+    <property>gear/gear[2]/compression-norm</property>
+    <factor>.005</factor>
+    <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+    </axis>
+  </animation>
+ 
+  <animation>
+    <type>spin</type>
+    <object-name>leftreartires</object-name>
+    <object-name>leftrearwheel</object-name>
+    <object-name>leftrearhub</object-name>
+    <object-name>leftrearlugs</object-name>
+  <property>fdm/jsbsim/gear/unit[2]/wheel-speed-fps</property>
+	<!--<property>sim/multiplay/generic/float[16]</property>-->
+  <factor>-1.5</factor>
+  <center>
+   <x-m>3.32703</x-m>
+   <y-m>-1.17923</y-m>
+   <z-m>0.640154</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1</y>
+   <z>0.0</z>
+  </axis>
+  </animation>
+
+<animation>
+    <type>translate</type>
+    <object-name>rightreartires</object-name>
+    <object-name>rightrearwheel</object-name>
+    <object-name>rightrearhub</object-name>
+    <object-name>rightrearlugs</object-name>
+    <property>gear/gear[3]/compression-norm</property>
+    <factor>.005</factor>
+    <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>spin</type>
+    <object-name>rightreartires</object-name>
+    <object-name>rightrearwheel</object-name>
+    <object-name>rightrearhub</object-name>
+    <object-name>rightrearlugs</object-name>
+  <property>fdm/jsbsim/gear/unit[3]/wheel-speed-fps</property>
+	<!--<property>sim/multiplay/generic/float[17]</property>-->
+  <factor>-1.5</factor>
+  <center>
+   <x-m>3.32781</x-m>
+   <y-m>1.22454</y-m>
+   <z-m>0.640119</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.732755 </y>
+   <z>0.0</z>
+  </axis>
+  </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>driverdoor</object-name>
+  <object-name>driverglass</object-name>
+  <object-name>driverdoorhandle</object-name>
+  <object-name>driverwindowframe</object-name>
+  <object-name>leftmirror</object-name>
+  <object-name>leftmirrorglass</object-name>
+  <object-name>driverdoorint</object-name>
+  <object-name>driverwindowframeint</object-name>
+  <property>canopy/position-norm</property>
+  <factor>-80</factor>
+  <center>
+   <x-m>-3.13709</x-m>
+   <y-m>-1.38117</y-m>
+   <z-m>0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>passengerdoor</object-name>
+  <object-name>passengerglass</object-name>
+  <object-name>passengerwindowframe</object-name>
+  <object-name>passengerdoorhandle</object-name>
+  <object-name>rightmirror</object-name>
+  <object-name>rightmirrorglass</object-name>
+  <object-name>passengerdoorint</object-name>
+  <object-name>passengerwindowframeint</object-name>
+  <property>canopy/position-norm</property>
+  <factor>80</factor>
+  <center>
+   <x-m>-3.13709</x-m>
+   <y-m>1.431</y-m>
+   <z-m>0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+
+
+<!--<animation>
+  <type>material</type>
+  <object-name>Face</object-name>
+  <object-name>Needle1</object-name>
+  <object-name>Mach1</object-name>
+  <object-name>Mach2</object-name>
+  <emission>
+    <red>0.8</red>
+    <green>0.4</green>
+    <blue>0.2</blue>
+    <factor-prop>/controls/lighting/panel-norm</factor-prop>
+  </emission>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>Needle1</object-name>
+  <property>/velocities/groundspeed-kt</property>
+  <interpolation>
+    <entry>
+      <ind>0</ind>
+      <dep>-9.5</dep>
+    </entry>
+    <entry>
+      <ind>60</ind>
+      <dep>0</dep>
+    </entry>
+    <entry>
+      <ind>250</ind>
+      <dep>244</dep>
+    </entry>
+    <entry>
+      <ind>300</ind>
+      <dep>265.5</dep>
+    </entry>
+    <entry>
+      <ind>450</ind>
+      <dep>331</dep>
+    </entry>
+  </interpolation>
+<axis>
+ <x2-m>-3.6762</x2-m>
+ <y2-m>-0.723248</y2-m>
+ <z2-m>2.35399</z2-m>
+ <x1-m>-3.61193</x1-m>
+ <y1-m>-0.723248</y1-m>
+ <z1-m>2.40171</z1-m>
+</axis>
+</animation>
+
+comment this out - Mach digits -
+
+<animation>
+  <type>textranslate</type>
+  <object-name>Mach1</object-name>
+  <property>/velocities/mach</property>
+  <factor>1.0</factor>
+  <step>0.1</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>textranslate</type>
+  <object-name>Mach2</object-name>
+  <property>/velocities/mach</property>
+  <factor>10</factor>
+  <step>.01</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+
+<animation>
+  <type>material</type>
+  <object-name>MDI.Card</object-name>
+  <object-name>MDI.Face</object-name>
+  <object-name>MDI.HdgBug</object-name>
+  <object-name>MDI.Needle</object-name>
+  <emission>
+    <red>0.8</red>
+    <green>0.4</green>
+    <blue>0.2</blue>
+    <factor-prop>/controls/lighting/panel-norm</factor-prop>
+  </emission>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>MDI.Card</object-name>
+  <property>/orientation/heading-deg</property>
+  <factor>1</factor>
+<axis>
+ <x2-m>-3.60743</x2-m>
+ <y2-m>-0.492607</y2-m>
+ <z2-m>2.4046</z2-m>
+ <x1-m>-3.67769</x1-m>
+ <y1-m>-0.492607</y1-m>
+ <z1-m> 2.35763</z1-m>
+</axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>MDI.HdgBug</object-name>
+  <property>/autopilot/settings/heading-bug-deg</property>
+<axis>
+ <x2-m>-3.60743</x2-m>
+ <y2-m>-0.492607</y2-m>
+ <z2-m>2.4046</z2-m>
+ <x1-m>-3.67769</x1-m>
+ <y1-m>-0.492607</y1-m>
+ <z1-m> 2.35763</z1-m>
+</axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>MDI.HdgBug</object-name>
+  <property>/orientation/heading-deg</property>
+  <factor>1</factor>
+<axis>
+ <x2-m>-3.60743</x2-m>
+ <y2-m>-0.492607</y2-m>
+ <z2-m>2.4046</z2-m>
+ <x1-m>-3.67769</x1-m>
+ <y1-m>-0.492607</y1-m>
+ <z1-m> 2.35763</z1-m>
+</axis>
+</animation>
+-->
+
+ <animation>
+  <type>range</type>
+  <min-m>0</min-m>
+  <max-m>5000</max-m>
+ </animation>
+
+
+
+
+</PropertyList>

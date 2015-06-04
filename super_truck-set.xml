@@ -1,0 +1,270 @@
+<?xml version="1.0"?>
+<!-- $Id: super_truck-set.xml,v1.0 2011-02-20 Pebinc Exp $ -->
+<!--
+
+Super Truck Racing Model - heavily revised model of the following:
+
+  Crash tender / fire truck model for FlightGear.
+
+  Copyright (C) 2007 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+
+  Original 3d model is by Alexis Bory.
+-->
+<PropertyList>
+
+ <sim>
+
+  <description>Super Truck</description>
+  <author>Peter Brown</author>
+  <status>Ground Vehicle</status>
+  <aircraft-version>0.2</aircraft-version>
+
+  <flight-model>jsb</flight-model>
+  <aero>super_truck</aero>
+
+  <presets>
+   <onground>true</onground>
+  </presets>
+
+
+  <startup>
+   <splash-texture>Aircraft/Super_Truck/super_truck-splash.png</splash-texture>
+  </startup>
+
+  <model>
+   <path>Aircraft/Super_Truck/Models/super_truck.xml</path>
+  </model>
+
+  <sound>
+   <path>Aircraft/Super_Truck/Sounds/hauler-sound.xml</path>
+  </sound>
+
+  <submodels>
+   <serviceable type="bool">true</serviceable>
+   <path>Aircraft/Super_Truck/submodels.xml</path>
+  </submodels>
+ 
+  <systems>
+
+   <electrical>
+    <path/>
+   </electrical>
+
+   <static>
+   </static>
+
+  </systems>
+  <instrumentation>
+   <path/>
+  </instrumentation>
+
+  <view n="0">
+   <internal archive="y">true</internal>
+   <config>
+    <!-- x/y/z == right/up/back -->
+    <x-offset-m archive="y"> -0.804198</x-offset-m>
+    <y-offset-m archive="y"> 3.07</y-offset-m>
+    <z-offset-m archive="y">-2.22</z-offset-m>
+    <pitch-offset-deg>-3.1</pitch-offset-deg>
+    <default-field-of-view-deg type="double">66.0</default-field-of-view-deg>
+   </config>
+  </view>
+
+  <view>
+    <name>Helicopter View</name>
+    <enabled type="bool" userarchive="y">true</enabled>
+    <type>lookat</type>
+    <config>
+      <from-model type="bool">false</from-model>
+      <from-model-idx type="int">0</from-model-idx>
+      <eye-lat-deg-path>/position/latitude-deg</eye-lat-deg-path>
+      <eye-lon-deg-path>/position/longitude-deg</eye-lon-deg-path>
+      <eye-alt-ft-path>/position/altitude-ft</eye-alt-ft-path>
+      <eye-heading-deg-path>/orientation/heading-deg</eye-heading-deg-path>
+
+      <at-model type="bool">true</at-model>
+      <at-model-idx type="int">0</at-model-idx>
+      <at-model-heading-damping type="double">0.0</at-model-heading-damping>
+      <target-z-offset-m type="double">2</target-z-offset-m>
+
+      <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+      <default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
+
+      <x-offset-m type="double">0</x-offset-m>
+      <y-offset-m type="double">2</y-offset-m>
+      <z-offset-m type="double">-25</z-offset-m>
+    </config>
+  </view>
+
+
+  <chase-distance-m type="double" archive="y">-25.0</chase-distance-m>
+
+  <multiplay>
+    <generic>
+     <int n="0" type="int">0</int>   <!-- Foam Beam -->
+     <int n="9" alias="/controls/gear/brake-right"/>
+     <int n="10" alias="/controls/gear/brake-left"/>
+     <int n="11" alias="/fdm/jsbsim/fcs/throttle-pos-norm"/>
+     <int n="12" alias="/controls/engines/engine/throttle"/>
+     <int n="13" alias="/controls/gear/brake-parking"/>
+     <int n="14" alias="/controls/lighting/headlights"/>    
+
+
+        <float n="0"></float> <!-- Rotating beacon flash -->
+        <float n="1"></float>	 
+        <float n="2"></float>
+	<float n="14" alias="/fdm/jsbsim/gear/unit[0]/wheel-speed-fps"/>
+	<float n="15" alias="/fdm/jsbsim/gear/unit[1]/wheel-speed-fps"/>	
+	<float n="16" alias="/fdm/jsbsim/gear/unit[2]/wheel-speed-fps"/>
+	<float n="17" alias="/fdm/jsbsim/gear/unit[3]/wheel-speed-fps"/>	
+      </generic>
+    </multiplay>
+	
+
+  <help>
+   <key>
+    <name>c</name>
+    <desc>Open/Shut Doors</desc>
+   </key>
+   <key>
+    <name>,</name>
+    <desc>Brakes.</desc>
+   </key>
+   <key>
+    <name>Shift R</name>
+    <desc>Toggle Forward/Reverse</desc>
+   </key>
+   <key>
+    <name>Shift B</name>
+    <desc>Toggle parking brake.</desc>
+   </key>
+   <key>
+    <name>d</name>
+    <desc>Pull Ripcord</desc>
+   </key>
+   <key>
+    <name>j</name>
+    <desc>Jettison Drag Chute</desc>
+   </key>
+   <key>
+    <name>l</name>
+    <desc>headlights (small L)</desc>
+   </key>
+  </help>
+
+	<hitches>
+	<!-- make sure some properties do exist, when the list for multiplayer transfer is defined-->
+	<!-- they need to be in the same value, as they are initilized in the FDM, to get the same values after reset should fix this somehow-->
+	<aerotow>
+		<tow>
+			<length type="float">30</length>
+			<elastic-constant type="float">10000</elastic-constant>
+			<weight-per-m-kg-m type="float">0.035</weight-per-m-kg-m>
+			<dist type="float">1</dist>
+			<connected-to-property-node type="bool"></connected-to-property-node>
+			<brake-force type="float">100000</brake-force>
+			<connected-to-ai-or-mp-callsign type ="string">*</connected-to-ai-or-mp-callsign>
+			<end-force-x type ="float">0</end-force-x>
+			<end-force-y type ="float">0</end-force-y>
+			<end-force-z type ="float">0</end-force-z>
+		</tow>
+		<speed-in-tow-direction type="float">0</speed-in-tow-direction>
+		<open type="bool">true</open>
+			<local-pos-x type="float">0</local-pos-x>
+			<local-pos-y type="float">0</local-pos-y>
+			<local-pos-z type="float">0</local-pos-z>
+		<is-slave type="bool">false</is-slave>
+	</aerotow>
+	</hitches>
+
+ </sim>
+
+ <fdm>
+  <jsbsim>
+   <systems>
+    <canopy>
+      <command type="double">0</command>
+    </canopy>
+   </systems> 
+  </jsbsim>
+ </fdm>
+
+<controls>
+ <lighting>
+   <headlights type="bool">false</headlights>
+ </lighting>
+</controls>
+
+ <canopy>
+  <position-norm type="double">0</position-norm>
+ </canopy>
+
+ <input>
+  <keyboard>
+
+ <key n="108">
+  <name>l</name>
+  <desc>headlights</desc>
+  <binding>
+   <command>property-toggle</command>
+ 	  <property>/controls/lighting/headlights</property>
+  </binding>
+ </key>
+
+    <key n="99">
+     <name>c</name>
+     <desc>toggle canopy</desc>
+     <binding>
+       <command>property-toggle</command>
+       <property>fdm/jsbsim/systems/canopy/command</property>
+     </binding>
+    </key> 
+
+   <key n="82">
+    <name>R</name>
+    <desc>Toggle reverse gear.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+      var dir = "/fdm/jsbsim/propulsion/engine/yaw-angle-rad";
+      setprop(dir, (getprop(dir) == 0) ? 3.14159265 : 0.0);
+     </script>
+    </binding>
+   </key>
+
+   <key n="100">
+     <name>d</name>
+     <desc>Pull Ripcord</desc>
+     <binding>
+      <command>property-assign</command>
+      <property>fdm/jsbsim/systems/chute/deploy</property>
+      <value type="int">1</value>
+     </binding>
+    </key>
+
+
+    <key n="106">
+      <name>j</name>
+      <desc>Cut Away Parachute</desc>
+      <binding>
+       <command>property-assign</command>
+       <property>fdm/jsbsim/systems/chute/deploy</property>
+       <value type="int">0</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>controls/flight/chute_jettisoned</property>
+       <value type="int">1</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>controls/flight/chute_jettisoned</property>
+       <value type="int">0</value>
+      </binding>
+    </key>
+
+  </keyboard>
+ </input>
+
+</PropertyList>

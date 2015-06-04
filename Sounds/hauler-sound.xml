@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+ 
+<PropertyList>
+ <fx>
+
+
+<!-- Current Engine Sound -->
+    <engine>
+      <name>engine #1 running</name>
+      <mode>looped</mode>
+      <path>Aircraft/Super_Truck/Sounds/engine4.wav</path>
+      <volume>
+  <property>/controls/engines/engine/throttle</property>
+        <factor>.05</factor>
+	<offset>1</offset>
+      </volume>
+        <pitch>
+  <property>/controls/engines/engine/throttle</property>
+         <factor>.8</factor>
+         <offset>0.8</offset>
+        </pitch>
+  <condition>
+      <greater-than-equals>
+  <property>/fdm/jsbsim/sim-time-sec</property>
+        <value>1.5</value>
+      </greater-than-equals>
+  </condition>
+    </engine>
+
+<!-- Startup -->
+    <engine1>
+      <name>engine #1 start</name>
+      <path>Aircraft/Super_Truck/Sounds/enginestart.wav</path>
+      <volume>
+        <factor>1</factor>
+	<offset>0.8</offset>
+      </volume>
+    </engine1>
+
+
+    <tire-rumble>
+      <name>tire-rumble</name>
+      <mode>looped</mode>
+      <path>Sounds/rumble.wav</path>
+      <condition>
+        <or>
+          <property>/gear/gear[0]/wow</property>
+          <property>/gear/gear[1]/wow</property>
+          <property>/gear/gear[2]/wow</property>
+          <property>/gear/gear[3]/wow</property>
+        </or>
+      </condition>
+      <volume>
+  <property>/velocities/groundspeed-kt</property>
+        <factor>.1</factor>
+        <max>1</max>
+      </volume>
+    </tire-rumble>
+
+    <thud>
+      <name>thud</name>
+   <path>Aircraft/Super_Truck/Sounds/thump2.wav</path>
+      <condition>
+        <or>
+          <property>/gear/gear[0]/wow</property>
+          <property>/gear/gear[1]/wow</property>
+          <property>/gear/gear[2]/wow</property>
+          <property>/gear/gear[3]/wow</property>
+        </or>
+      </condition>
+      <volume>
+        <property>/velocities/speed-down-fps</property>
+        <factor>18</factor>
+      </volume>
+    </thud>
+
+   <chute>
+     <name>Chutepop</name>
+     <condition>
+      <property>fdm/jsbsim/systems/chute/deploy</property>
+     </condition>
+   <path>Aircraft/Super_Truck/Sounds/doublechute.wav</path>
+  </chute>
+
+   <crash>
+     <name>Crash</name>
+     <condition>
+      <property>sim/crashed</property>
+	<value>true</value>
+     </condition>
+   <path>Sounds/crash.wav</path>
+  </crash>
+
+   <brakes>
+     <name>Airbrakes</name>
+     <condition>
+	<and>
+	<less-than>
+      <property>/controls/gear/brake-left</property>
+	<value>0.75</value>
+	</less-than>
+      <greater-than-equals>
+  	<property>/fdm/jsbsim/sim-time-sec</property>
+        <value>2</value>
+      </greater-than-equals>
+	</and>
+     </condition>
+   <path>Aircraft/Super_Truck/Sounds/brakes.wav</path>
+  </brakes>
+
+
+ </fx>
+</PropertyList>

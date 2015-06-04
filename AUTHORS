@@ -1,0 +1,27 @@
+Crash_hauler
+Based heavily on Crash_tender by Anders Gidenstam
+(http://www.gidenstam.org/FlightGear/misc/WildFire/)
+
+
+Peter Brown
+ - Remodeled into a flatbed truck
+ - Revised FDM with different suspension, power and handling settings
+ - Added wheel, smoke, beacons and drag chute animations
+
+Drag Chute & Beacons comes from Dave Culp's "Davepack"
+Instruments come from Gary Neely's MD-81 and Grumman Goose.
+Steering Wheel and Seats(modified) come from Detlef Faber's Jeep.
+
+Original Authors of Crash_tender:
+
+Anders Gidenstam  (anders(at)gidenstam.org)
+  - Crash tender FlightGear configuration
+  - Crash tender Flight Dynamics Model configuration
+  - Crash tender 3d model animations
+
+The model borrows content from the following authors' contributions
+to FlightGear:
+
+Alexis Bory
+ - The crash tender 3d model.
+   (From http://scenemodels.flightgear.org/download/SharedModels.tgz)

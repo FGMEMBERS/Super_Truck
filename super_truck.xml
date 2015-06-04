@@ -1,0 +1,487 @@
+<?xml version="1.0"?>
+<!-- $Id: super_truck.xml,v1.0 2011-01-23 Pebinc Exp $ -->
+<!--
+Heavily revised "Super Truck" model of the following:
+
+  Hoskosh-ti-1500 flight model for JSBSim.
+
+  Copyright (C) 2008 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
+<fdm_config name="Fire truck" version="2.0" release="ALPHA"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
+
+<!--
+  NOTE: This file is not designed to be accurate/realistic.
+-->
+ <fileheader>
+  <author> Peter Brown </author>
+  <filecreationdate> 2011-02-20 </filecreationdate>
+  <version>
+   $Id: super_truck.xml,v 0.1 2011-02-20 pebinc Exp $
+  </version>
+  <description>Super Truck</description>
+ </fileheader>
+
+
+ <metrics>
+  <wingarea unit="M2"> 50.1 </wingarea> <!--  Must be large to avoid  -->
+  <wingspan unit="M">   4.9 </wingspan>  <!--  numerical problems.     -->
+  <chord unit="M">      0.0 </chord>
+  <htailarea unit="FT2"> 12 </htailarea>
+  <htailarm unit="FT"> 1 </htailarm>
+  <vtailarea unit="FT2"> 0 </vtailarea>
+  <vtailarm unit="FT"> 0 </vtailarm>
+  <location name="AERORP" unit="M">
+   <x> 0 </x>
+   <y> 0 </y>
+   <z> 1.0 </z>
+  </location>
+  <location name="EYEPOINT" unit="M">
+   <x> -2.28 </x>
+   <y>   0  </y>
+   <z> 3.21  </z>
+  </location>
+  <location name="VRP" unit="M">
+   <x> 0 </x>
+   <y> 0 </y>
+   <z> 0 </z>
+  </location>
+ </metrics>
+
+ <mass_balance>
+
+  <!--
+    Rough model to estimate CG and inertia tensor.
+
+    % The car is a uniform 9.0x2.9x1 meter box.
+    % CG in the middle between the wheels.
+    m = 10000  % KG
+    a = 9.0    % m
+    b = 2.9    % m
+    c = 1      % m
+
+    Ixx = 1/12 * m * (b^2 + c^2)
+    Iyy = 1/12 * m * (a^2 + c^2)
+    Izz = 1/12 * m * (a^2 + b^2)
+    Ixy = Ixz = Iyz = 0
+  -->
+
+  <ixx unit="KG*M2">  7841.7 </ixx>
+  <iyy unit="KG*M2"> 68333.0 </iyy>
+  <izz unit="KG*M2"> 74508.0 </izz>
+  <ixy unit="KG*M2">   -0   </ixy>
+  <ixz unit="KG*M2">   -0   </ixz>
+  <iyz unit="KG*M2">   -0   </iyz>
+  <emptywt unit="KG"> 10000 </emptywt>
+  <location name="CG" unit="M">
+   <x>  -0.1 </x>
+   <y>  0.0249183 </y>
+   <z>  0.7 </z>
+  </location>
+
+ </mass_balance>
+
+ <ground_reactions>
+
+  <contact type="BOGEY" name="LEFT_FRONT_WHEEL">
+   <location unit="M">
+    <x>  -1.89459 </x>
+    <y>  -1.44748 </y>
+    <z>  -0.1 </z>
+   </location>
+   <static_friction> 1.8 </static_friction>
+   <dynamic_friction> 0.6 </dynamic_friction>
+   <rolling_friction> .1 </rolling_friction>
+   <spring_coeff unit="N/M"> 150000 </spring_coeff>
+   <damping_coeff unit="N/M/SEC"> 40000 </damping_coeff>
+   <max_steer unit="DEG"> 20.0 </max_steer>
+   <brake_group> LEFT </brake_group>
+   <retractable>0</retractable>
+  </contact>
+  <contact type="BOGEY" name="RIGHT_FRONT_WHEEL">
+   <location unit="M">
+    <x>  -1.89459 </x>
+    <y>  1.50152 </y>
+    <z>  -0.1 </z>
+   </location>
+   <static_friction> 1.8 </static_friction>
+   <dynamic_friction> 0.6 </dynamic_friction>
+   <rolling_friction> 0.1 </rolling_friction>
+   <spring_coeff unit="N/M"> 150000 </spring_coeff>
+   <damping_coeff unit="N/M/SEC"> 40000 </damping_coeff>
+   <max_steer unit="DEG"> 20 </max_steer>
+   <brake_group> RIGHT </brake_group>
+   <retractable>0</retractable>
+  </contact>
+  <contact type="BOGEY" name="LEFT_REAR_WHEEL">
+   <location unit="M">
+    <x>   3.35967 </x>
+    <y>  -1.5714 </y>
+    <z>  -0.05 </z>
+   </location>
+   <static_friction> 1.8 </static_friction>
+   <dynamic_friction> 0.6 </dynamic_friction>
+   <rolling_friction> 0.2 </rolling_friction>
+   <spring_coeff unit="N/M"> 140000 </spring_coeff>
+   <damping_coeff unit="N/M/SEC"> 30000 </damping_coeff>
+   <max_steer unit="DEG"> 0.0 </max_steer>
+   <brake_group> LEFT </brake_group>
+   <retractable>0</retractable>
+  </contact>
+  <contact type="BOGEY" name="RIGHT_REAR_WHEEL">
+   <location unit="M">
+    <x>   3.35967 </x>
+    <y>  1.60323 </y>
+    <z>  -0.05 </z>
+   </location>
+   <static_friction> 1.8 </static_friction>
+   <dynamic_friction> 0.6 </dynamic_friction>
+   <rolling_friction> 0.2 </rolling_friction>
+   <spring_coeff unit="N/M"> 140000 </spring_coeff>
+   <damping_coeff unit="N/M/SEC"> 30000 </damping_coeff>
+   <max_steer unit="DEG"> 0.0 </max_steer>
+   <brake_group> RIGHT </brake_group>
+   <retractable>0</retractable>
+  </contact>
+
+  <contact type="BOGEY" name="RIGHT_MID_WHEEL">
+   <location unit="M">
+    <x>  0.00 </x>
+    <y>   3.5 </y>
+    <z>  3 </z>
+   </location>
+   <static_friction> 0 </static_friction>
+   <dynamic_friction> 0 </dynamic_friction>
+   <rolling_friction> 0 </rolling_friction>
+   <spring_coeff unit="N/M"> 200000 </spring_coeff>
+   <damping_coeff unit="N/M/SEC"> 20000 </damping_coeff>
+   <brake_group> NONE </brake_group>
+   <retractable>1</retractable>
+  </contact>
+  <contact type="BOGEY" name="LEFT_MID_WHEEL">
+   <location unit="M">
+    <x>  -0.00</x>
+    <y>  -3.5 </y>
+    <z>  3 </z>
+   </location>
+   <static_friction> 0 </static_friction>
+   <dynamic_friction> 0 </dynamic_friction>
+   <rolling_friction> 0 </rolling_friction>
+   <spring_coeff unit="N/M"> 200000 </spring_coeff>
+   <damping_coeff unit="N/M/SEC"> 20000 </damping_coeff>
+   <brake_group> NONE </brake_group>
+   <retractable>1</retractable>
+  </contact>
+
+
+  <contact type="STRUCTURE" name="REAR_LEFT">
+   <location unit="M">
+    <x>   4.6 </x>
+    <y>  -1.4 </y>
+    <z>   1.0 </z>
+   </location>
+   <static_friction> 0.8 </static_friction>
+   <dynamic_friction> 0.8 </dynamic_friction>
+   <rolling_friction> 0.8 </rolling_friction>
+   <spring_coeff unit="N/M"> 200000 </spring_coeff>
+   <damping_coeff unit="N/M/SEC"> 60000 </damping_coeff>
+   <max_steer unit="DEG"> 0.0 </max_steer>
+   <brake_group> NONE </brake_group>
+   <retractable>0</retractable>
+  </contact>
+  <contact type="STRUCTURE" name="REAR_RIGHT">
+   <location unit="M">
+    <x>   4.6 </x>
+    <y>   1.4 </y>
+    <z>   1.0 </z>
+   </location>
+   <static_friction> 0.8 </static_friction>
+   <dynamic_friction> 0.8 </dynamic_friction>
+   <rolling_friction> 0.8 </rolling_friction>
+   <spring_coeff unit="N/M"> 200000 </spring_coeff>
+   <damping_coeff unit="N/M/SEC"> 60000 </damping_coeff>
+   <max_steer unit="DEG"> 0.0 </max_steer>
+   <brake_group> NONE </brake_group>
+   <retractable>0</retractable>
+  </contact>
+  <contact type="STRUCTURE" name="FRONT_LEFT">
+   <location unit="M">
+    <x>  -4.4  </x>
+    <y>  -1.4  </y>
+    <z>   0.9  </z>
+   </location>
+   <static_friction> 0.8 </static_friction>
+   <dynamic_friction> 0.8 </dynamic_friction>
+   <rolling_friction> 0.8 </rolling_friction>
+   <spring_coeff unit="N/M"> 200000 </spring_coeff>
+   <damping_coeff unit="N/M/SEC"> 60000 </damping_coeff>
+   <max_steer unit="DEG"> 0.0 </max_steer>
+   <brake_group> NONE </brake_group>
+   <retractable>0</retractable>
+  </contact>
+  <contact type="STRUCTURE" name="FRONT_RIGHT">
+   <location unit="M">
+    <x>  -4.4  </x>
+    <y>   1.4  </y>
+    <z>   0.9  </z>
+   </location>
+   <static_friction> 0.8 </static_friction>
+   <dynamic_friction> 0.8 </dynamic_friction>
+   <rolling_friction> 0.8 </rolling_friction>
+   <spring_coeff unit="N/M"> 200000 </spring_coeff>
+   <damping_coeff unit="N/M/SEC"> 60000 </damping_coeff>
+   <max_steer unit="DEG"> 0.0 </max_steer>
+   <brake_group> NONE </brake_group>
+   <retractable>0</retractable>
+  </contact>
+
+  <contact type="STRUCTURE" name="REAR_LEFT_TOP">
+   <location unit="M">
+    <x>   4.0 </x>
+    <y>  -1.25 </y>
+    <z>   3.75 </z>
+   </location>
+   <static_friction> 0.8 </static_friction>
+   <dynamic_friction> 0.8 </dynamic_friction>
+   <rolling_friction> 0.8 </rolling_friction>
+   <spring_coeff unit="N/M"> 200000 </spring_coeff>
+   <damping_coeff unit="N/M/SEC"> 60000 </damping_coeff>
+   <max_steer unit="DEG"> 0.0 </max_steer>
+   <brake_group> NONE </brake_group>
+   <retractable>0</retractable>
+  </contact>
+  <contact type="STRUCTURE" name="REAR_RIGHT_TOP">
+   <location unit="M">
+    <x>   4.0 </x>
+    <y>   1.25 </y>
+    <z>   3.75 </z>
+   </location>
+   <static_friction> 0.8 </static_friction>
+   <dynamic_friction> 0.8 </dynamic_friction>
+   <rolling_friction> 0.8 </rolling_friction>
+   <spring_coeff unit="N/M"> 200000 </spring_coeff>
+   <damping_coeff unit="N/M/SEC"> 60000 </damping_coeff>
+   <max_steer unit="DEG"> 0.0 </max_steer>
+   <brake_group> NONE </brake_group>
+   <retractable>0</retractable>
+  </contact>
+  <contact type="STRUCTURE" name="FRONT_LEFT_TOP">
+   <location unit="M">
+    <x>  -3.13  </x>
+    <y>  -1.27  </y>
+    <z>   3.86  </z>
+   </location>
+   <static_friction> 0.8 </static_friction>
+   <dynamic_friction> 0.8 </dynamic_friction>
+   <rolling_friction> 0.8 </rolling_friction>
+   <spring_coeff unit="N/M"> 200000 </spring_coeff>
+   <damping_coeff unit="N/M/SEC"> 60000 </damping_coeff>
+   <max_steer unit="DEG"> 0.0 </max_steer>
+   <brake_group> NONE </brake_group>
+   <retractable>0</retractable>
+  </contact>
+  <contact type="STRUCTURE" name="FRONT_RIGHT_TOP">
+   <location unit="M">
+    <x>  -3.13  </x>
+    <y>  1.27  </y>
+    <z>   3.86  </z>
+   </location>
+   <static_friction> 0.8 </static_friction>
+   <dynamic_friction> 0.8 </dynamic_friction>
+   <rolling_friction> 0.8 </rolling_friction>
+   <spring_coeff unit="N/M"> 200000 </spring_coeff>
+   <damping_coeff unit="N/M/SEC"> 60000 </damping_coeff>
+   <max_steer unit="DEG"> 0.0 </max_steer>
+   <brake_group> NONE </brake_group>
+   <retractable>0</retractable>
+  </contact>
+
+ </ground_reactions>
+
+ <propulsion>
+  <engine file="electric75kW">
+      <condition>
+        <or>
+          <property>/gear/gear[2]/wow</property>
+          <property>/gear/gear[3]/wow</property>
+        </or>
+      </condition>
+   <location unit="M">
+    <x>  -2.5 </x>
+    <y>  0.0 </y>
+    <z>  1.25 </z>
+   </location>
+   <orient unit="DEG">
+    <roll>  0.0 </roll>
+    <pitch> 0.0 </pitch>
+    <yaw>   0.0 </yaw>
+   </orient>
+   <thruster file="direct">
+    <location unit="M">
+     <x>  -1.0 </x>
+     <y>  0.0249183 </y>
+     <z>  0.6 </z>
+    </location>
+    <orient unit="DEG">
+     <roll>  0.0 </roll>
+     <pitch> 0.0 </pitch>
+     <yaw>   0.0 </yaw>
+    </orient>
+   </thruster>
+  </engine>
+
+ </propulsion>
+
+ <system file="chute"/>
+ <system file="canopy"/>
+
+ <flight_control name="FGFCS">
+
+  <property>fcs/engine-throttle-pos-norm</property>
+  <property>/controls/gear/brake-left</property>
+  <property>/controls/gear/brake-right</property>
+  <property>/controls/gear/brake-parking</property>
+
+   <channel name="Landing Gear">
+   <kinematic name="Gear Control">
+     <input>gear/gear-cmd-norm</input>
+     <traverse>
+       <setting>
+          <position> 0 </position>
+          <time>     0 </time>
+       </setting>
+       <setting>
+          <position> 1 </position>
+          <time>     5 </time>
+       </setting>
+     </traverse>
+     <output>gear/gear-pos-norm</output>
+   </kinematic>
+
+  </channel>
+
+  <channel name="Steering">
+
+   <fcs_function name="fcs/steering-cmd-deg">
+    <function>
+     <product>
+      <value>30.0</value>
+      <property>fcs/aileron-cmd-norm</property>
+     </product>
+    </function>
+    <output>fcs/steer-pos-deg[0]</output>
+    <output>fcs/steer-pos-deg[1]</output>
+   </fcs_function>
+
+   <aerosurface_scale name="Rudder Position Normalized">
+    <input>-fcs/steering-cmd-deg</input>
+    <domain>
+     <min>-30.0</min>
+     <max>30.0</max>
+    </domain>
+    <range>
+     <min>-1</min>
+     <max>1</max>
+    </range>
+    <output>fcs/rudder-pos-norm</output>
+   </aerosurface_scale>
+
+  </channel>
+
+<channel name="Brakes">
+ <fcs_function name="fcs/brake-cmd-norm">
+   <function>
+     <max>
+       <property>/controls/gear/brake-left</property>
+       <property>/controls/gear/brake-right</property>
+       <property>/controls/gear/brake-parking</property>
+     </max>
+   </function>
+   <output>fcs/left-brake-cmd-norm</output>
+   <output>fcs/right-brake-cmd-norm</output>
+   <output>fcs/center-brake-cmd-norm</output>
+ </fcs_function>
+</channel>
+
+ 
+  <channel name="Engine control">
+
+   <fcs_function name="fcs/engine-throttle-cmd-norm">
+    <function>
+     <sum>
+      <property>fcs/throttle-cmd-norm</property>
+     </sum>
+    </function>
+   </fcs_function>
+
+   <scheduled_gain name="Power limiter">
+    <input>fcs/engine-throttle-cmd-norm</input>
+    <gain>1.0</gain>
+    <table>
+     <independentVar>velocities/u-fps</independentVar>
+     <tableData>
+      -35.0  0.0
+      0      1.0
+      30     1.0
+      450  0.0
+     </tableData>
+    </table>
+    <output>fcs/engine-throttle-pos-norm</output>
+   </scheduled_gain>
+
+ <switch name="Brake cut off">
+   <default value="0.0"/>
+   <test logic="AND" value="fcs/engine-throttle-pos-norm">
+     fcs/left-brake-cmd-norm lt 0.01
+   </test>
+   <output>fcs/throttle-pos-norm</output>
+ </switch>
+
+  </channel>
+
+
+
+
+ </flight_control>
+
+ <aerodynamics>
+  <!-- Wild guess: D = K A q_inf -->
+  <!-- A = cross sectional area (m^2); -->
+  <axis name="DRAG">
+  <function name="aero/coefficient/CDcar">
+    <description>Drag</description>
+    <product>
+     <property>aero/qbar-psf</property>
+     <value> 93.6 </value>
+     <!-- Start CD -->
+     <value> 0.07 </value>
+    </product>
+   </function>
+
+    <function name="aero/coefficient/CDbc">
+       <description>Drag_due_to_braking_chute</description>
+         <product>
+           <property>aero/qbar-psf</property>
+           <property>metrics/Sw-sqft</property>
+           <property>systems/chute/unfurl-norm</property>
+           <value>4</value>
+         </product>
+    </function>
+
+    <function name="aero/coefficient/CLde">
+       <description>Lift_due_to_Elevator_Deflection</description>
+       <product>
+           <property>aero/qbar-psf</property>
+           <property>metrics/Sw-sqft</property>
+           <property>fcs/elevator-pos-rad</property>
+           <value>1</value>
+       </product>
+    </function>
+  </axis>
+
+ </aerodynamics>
+
+</fdm_config>
